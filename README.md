@@ -7,7 +7,7 @@ http://code.google.com/p/ngopt/
 
 (Tritt, Andrew, et al. "An integrated pipeline for de novo assembly of microbial genomes." PloS one 7.9 (2012): e42304.)
 
-Please see A5PipelineREADME for copyright and license information.
+Please see README.html for original authors' copyright and license information.
 
 
 Modifications
