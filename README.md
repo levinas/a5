@@ -15,5 +15,5 @@ Modifications
 
 1. Fixed a bug in detecting Phred64 quality coding.
 2. Added the latest idba_ud for iterative assembly.
-3. Fixed idba_ud's support for longer reads (up to 255bp).
+3. Fixed idba_ud's support for longer reads (up to 256bp).
 
