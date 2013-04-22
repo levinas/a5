@@ -17,3 +17,4 @@ Modifications
 2. Added the latest idba_ud for iterative assembly.
 3. Fixed idba_ud's support for longer reads (up to 256bp).
 
+The new script bin/a5 replaces the original script bin/a5_pipeline.pl.
