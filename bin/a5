@@ -1483,7 +1483,7 @@ sub get_insert($$$$) {
 	my $r2fq = shift;
 	my $outbase = shift;
 	my $ctgs = shift;
-	my $estimate_pair_count = 40000;
+	my $estimate_pair_count = 80000;
 	my $require_reads = 4000;
 	my $fq_linecount = $estimate_pair_count*4;
 	# estimate the library insert size with bwa
@@ -1504,12 +1504,10 @@ sub get_insert($$$$) {
 	`tail -n $half_lines $r1fq >> $r1fq.sub`;
 	`head -n $half_lines $r2fq > $r2fq.sub`;
 	`tail -n $half_lines $r2fq >> $r2fq.sub`;
-	`$DIR/bwa aln $ctgs $r1fq.sub > $r1fq.sub.sai`;
-	`$DIR/bwa aln $ctgs $r2fq.sub > $r2fq.sub.sai`;
 	# use bwa to map the reads
-	my $cmd = "$DIR/bwa sampe -P $ctgs $r1fq.sub.sai $r2fq.sub.sai $r1fq.sub $r2fq.sub ".
+	my $cmd = "$DIR/bwa mem -t $nthread $ctgs $r1fq.sub $r2fq.sub ".
 			"> $outbase.sub.pe.sam 2> $outbase.sampe.out";
-	`$cmd`;
+	system($cmd);
 	$cmd = "GetInsertSize.jar $outbase.sub.pe.sam";
 	print STDERR "[a5] java -jar $cmd\n"; 
 	my $cmdout = `java -jar $DIR/$cmd`;
